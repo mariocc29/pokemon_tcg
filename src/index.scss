@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  cursor: default;
+  font-family: $font-family-roboto;
+  font-size: 1rem;
+  background: linear-gradient(to bottom, $color-bg-start 0%, $color-bg-end 100%);
+  color: $color-primary-dark;
+}
