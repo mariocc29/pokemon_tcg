@@ -1,25 +1,22 @@
-import pokemonLogo from '/logo.svg'
-import pokeball from '/pokeball.svg'
-import './main.scss'
+import { Route, Routes } from 'react-router-dom'
 
-import { DeckEmptyState } from '../../components/deck/empty_state/DeckEmptyState'
+import { Header } from '/@layouts/header/Header'
+import { Deck } from '/@pages/deck/Deck'
+import { NewDeck } from '/@pages/deck/new/NewDeck'
+import './main.scss'
 
 export const Main = () => {
   return (
     <>
       <section className='wrapper'>
         
-        <header>
-          <div className='pokeball'>
-            <img src={ pokeball } />
-          </div>
-          <div className='brand'>
-            <img src={ pokemonLogo } />
-          </div>
-        </header>
+        <Header />
         
         <main>
-          <DeckEmptyState />
+          <Routes>
+            <Route path="/" element={<Deck />} />
+            <Route path="/deck" element={<NewDeck />} />
+          </Routes>
         </main>
       </section>
     </>

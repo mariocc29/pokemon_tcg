@@ -7,8 +7,8 @@
     flex-basis: calc(#{$flex-basis} - $grid-gutter-column);
   }
 
-  margin-left: $grid-gutter-column / 2;
-  margin-right: $grid-gutter-column / 2;
+  margin-left: calc($grid-gutter-column / 2);
+  margin-right: calc($grid-gutter-column / 2);
 
   &:first-child { 
     @if $columns < $grid-total-columns {

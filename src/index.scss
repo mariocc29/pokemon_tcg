@@ -11,4 +11,34 @@ html, body {
   font-size: 1rem;
   background: linear-gradient(to bottom, $color-bg-start 0%, $color-bg-end 100%);
   color: $color-primary-dark;
+
+  .valign-top {
+		display: flex;
+		align-items: flex-start;
+	}
+	
+	.valign-middle {
+		display: flex;
+		align-items: center;
+	}
+	
+	.valign-bottom {
+		display: flex;
+		align-items: flex-end;
+	}
+	
+	.align-left {
+		display: flex;
+		justify-content: flex-start;
+	}
+	
+	.align-center {
+		display: flex;
+		justify-content: center;
+	}
+	
+	.align-right {
+		display: flex;
+		justify-content: flex-end;
+	}
 }

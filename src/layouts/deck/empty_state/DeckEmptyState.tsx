@@ -1,15 +1,21 @@
-import pokeball from '/pokeball_open.svg'
+import { useNavigate } from 'react-router-dom';
+
+import pokeball from '/@assets/images/pokeball_open.svg'
+import { Button } from '/@shared/button/Button'
 import './deck_empty_state.scss'
-import { Button } from '../../../shared/button/Button'
 
 export const DeckEmptyState = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => navigate('/deck');
+
   return(
     <>
       <section className='empty_state'>
         <main>
           <article className='row'>
             <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 pokeball'>
-              <img src={ pokeball } alt="Pokeball Opened" />
+              <img src={ pokeball } alt="Pokeball Opened" onClick={handleClick}/>
             </div>
           </article>
           <article className='row'>
@@ -27,7 +33,9 @@ export const DeckEmptyState = () => {
         <footer>
           <div className='row'>
             <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3'>
-              <Button />
+              <Button onClick={handleClick}>
+                Create your first deck here
+              </Button>
             </div>
           </div>
         </footer>
