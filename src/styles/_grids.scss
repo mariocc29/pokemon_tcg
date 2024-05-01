@@ -1,0 +1,74 @@
+@mixin col($columns) {
+  $flex-basis: calc((100% / #{$grid-total-columns}) * #{$columns});
+
+  @if $columns == $grid-total-columns {
+    flex-basis: $flex-basis;
+  } @else {
+    flex-basis: calc(#{$flex-basis} - $grid-gutter-column);
+  }
+
+  margin-left: $grid-gutter-column / 2;
+  margin-right: $grid-gutter-column / 2;
+
+  &:first-child { 
+    @if $columns < $grid-total-columns {
+      flex-basis: calc(#{$flex-basis} - ($grid-gutter-column / 2));
+    }
+    margin-left: 0; 
+  }
+  
+  &:last-child { 
+    @if $columns < $grid-total-columns {
+      flex-basis: calc(#{$flex-basis} - ($grid-gutter-column / 2));
+    }
+    margin-right: 0;
+  }
+}
+
+@mixin offset($offset) {
+  $offset-width: calc((100% / #{$grid-total-columns}) * #{$offset});
+  margin-left: calc($grid-gutter-column / 2 + $offset-width) !important;
+
+  &:first-child { 
+    margin-left: $offset-width !important; 
+  }
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include sm {
+    @for $col from 1 through $grid-total-columns {
+      .col-sm-#{$col} { @include col($col); }
+      .offset-sm-#{$col} { @include offset($col); }
+    }
+  }
+
+  @include md {
+    @for $col from 1 through $grid-total-columns {
+      .col-md-#{$col} { @include col($col); }
+      .offset-md-#{$col} { @include offset($col); }
+    }
+  }
+
+  @include lg {
+    @for $col from 1 through $grid-total-columns {
+      .col-lg-#{$col} { @include col($col); }
+      .offset-lg-#{$col} { @include offset($col); }
+    }
+  }
+
+  @include xl {
+    @for $col from 1 through $grid-total-columns {
+      .col-xl-#{$col} { @include col($col); }
+      .offset-xl-#{$col} { @include offset($col); }
+    }
+  }
+
+  @include xxl {
+    @for $col from 1 through $grid-total-columns {
+      .col-xxl-#{$col} { @include col($col); }
+      .offset-xxl-#{$col} { @include offset($col); }
+    }
+  }
+}

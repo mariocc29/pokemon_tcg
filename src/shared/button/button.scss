@@ -1,0 +1,27 @@
+.btn {
+  border-radius: 2px;
+	display:inline-block;
+	cursor:pointer;
+	font-size:15px;
+	padding:14px 24px;
+	text-decoration:none;
+  border-radius: 5px;
+
+  &.btn-info {
+    background-color: $color-status-primary-bg;
+    border:1px solid $color-status-primary-border;
+    color: $color-status-primary-text;
+  }
+
+  &.btn-success {
+    background-color: $color-status-success-bg;
+    border:1px solid $color-status-success-border;
+    color: $color-status-success-text;
+  }
+
+  &.btn-alert {
+    background-color: $color-status-alert-bg;
+    border:1px solid $color-status-alert-border;
+    color: $color-status-alert-text;
+  }
+}

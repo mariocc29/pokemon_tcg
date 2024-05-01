@@ -26,17 +26,12 @@ $color-status-success-bg: #00B377;
 $color-status-success-border: #00A36D;
 $color-status-success-text: #FFF;
 
-$color-status-warning-bg: #FFA900;
-$color-status-warning-border: #DF9613;
-$color-status-warning-text: #4B3200;
-
 $color-status-alert-bg: #E6272E;
 $color-status-alert-border: #D2242A;
 $color-status-alert-text: #FFF;
 
-$color-status-cancel-bg: #FFF;
-$color-status-cancel-border: #D3D9DF;
-$color-status-cancel-text: #242F43;
-
 $font-family-urbane: "urbane-rounded", sans-serif;
 $font-family-roboto: "Roboto", sans-serif;
+
+$grid-gutter-column: 20px;
+$grid-total-columns: 12;
