@@ -1,0 +1,163 @@
+@mixin card($columns) {
+  $flex-basis: calc((100% / #{$grid-total-columns}) * #{$columns});
+  
+  @if $columns == $grid-total-columns {
+    flex-basis: $flex-basis;
+  } @else {
+    flex-basis: calc(#{$flex-basis} - $grid-gutter-column);
+  }
+
+  margin-left: calc($grid-gutter-column / 2);
+  margin-right: calc($grid-gutter-column / 2);
+}
+
+.card-type {
+  position: relative;
+  text-transform: capitalize;
+  color: $color-primary-light;
+  height: 52px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+
+  &.card-type-colorless {
+    background-color: $color-type-colorless;
+    box-shadow: 0 4px 8px $color-type-colorless;
+  }
+
+  &.card-type-darkness {
+    background-color: $color-type-darkness;
+    box-shadow: 0 4px 8px $color-type-darkness;
+  }
+
+  &.card-type-dragon {
+    background-color: $color-type-dragon;
+    box-shadow: 0 4px 8px $color-type-dragon;
+  }
+
+  &.card-type-fairy {
+    background-color: $color-type-fairy;
+    box-shadow: 0 4px 8px $color-type-fairy;
+  }
+
+  &.card-type-fighting {
+    background-color: $color-type-fighting;
+    box-shadow: 0 4px 8px $color-type-fighting;
+  }
+
+  &.card-type-fire {
+    background-color: $color-type-fire;
+    box-shadow: 0 4px 8px $color-type-fire;
+  }
+
+  &.card-type-grass {
+    background-color: $color-type-grass;
+    box-shadow: 0 4px 8px $color-type-grass;
+  }
+
+  &.card-type-lightning {
+    background-color: $color-type-lightning;
+    box-shadow: 0 4px 8px $color-type-lightning;
+  }
+
+  &.card-type-metal {
+    background-color: $color-type-metal;
+    box-shadow: 0 4px 8px $color-type-metal;
+  }
+
+  &.card-type-psychic {
+    background-color: $color-type-psychic;
+    box-shadow: 0 4px 8px $color-type-psychic;
+  }
+
+  &.card-type-water {
+    background-color: $color-type-water;
+    box-shadow: 0 4px 8px $color-type-water;
+  }
+
+  .card-container {
+    input[type=radio] { display: none; }
+
+    .checkmark {
+      position: absolute;
+      z-index: 2;
+      top: 10px;
+      right: 10px;
+      height: 20px;
+      width: 20px;
+      background-color: $color-primary-light;
+      border-radius: 100%;
+
+      &::after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 12px;
+        width: 12px;
+        background-color: $color-primary-light;
+        border: 2px solid;
+        border-radius: 100%;
+      }
+    }
+    
+    input[type=radio]:checked ~ .checkmark-colorless::after { background-color: $color-type-colorless; }
+    .checkmark-colorless::after { border-color: $color-type-colorless; }
+
+    input[type=radio]:checked ~ .checkmark-darkness::after { background-color: $color-type-darkness; }
+    .checkmark-darkness::after { border-color: $color-type-darkness; }
+
+    input[type=radio]:checked ~ .checkmark-dragon::after { background-color: $color-type-dragon; }
+    .checkmark-dragon::after { border-color: $color-type-dragon; }
+
+    input[type=radio]:checked ~ .checkmark-fairy::after { background-color: $color-type-fairy; }
+    .checkmark-fairy::after { border-color: $color-type-fairy; }
+
+    input[type=radio]:checked ~ .checkmark-fighting::after { background-color: $color-type-fighting; }
+    .checkmark-fighting::after { border-color: $color-type-fighting; }
+
+    input[type=radio]:checked ~ .checkmark-fire::after { background-color: $color-type-fire; }
+    .checkmark-fire::after { border-color: $color-type-fire; }
+
+    input[type=radio]:checked ~ .checkmark-grass::after { background-color: $color-type-grass; }
+    .checkmark-grass::after { border-color: $color-type-grass; }
+
+    input[type=radio]:checked ~ .checkmark-lightning::after { background-color: $color-type-lightning; }
+    .checkmark-lightning::after { border-color: $color-type-lightning; }
+
+    input[type=radio]:checked ~ .checkmark-metal::after { background-color: $color-type-metal; }
+    .checkmark-metal::after { border-color: $color-type-metal; }
+
+    input[type=radio]:checked ~ .checkmark-psychic::after { background-color: $color-type-psychic; }
+    .checkmark-psychic::after { border-color: $color-type-psychic; }
+
+    input[type=radio]:checked ~ .checkmark-water::after { background-color: $color-type-water; }
+    .checkmark-water::after { border-color: $color-type-water; }
+
+  }
+
+  svg {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    opacity: 0.1;
+    
+    path {
+      fill: $color-primary-light;
+    }
+  }
+
+  @include sm {
+    @for $col from 1 through $grid-total-columns {
+      &.card-sm-#{$col} { @include card($col); }
+    }
+  }
+  
+  @include md {
+    @for $col from 1 through $grid-total-columns {
+      &.card-md-#{$col} { @include card($col); }
+    }
+  }
+}

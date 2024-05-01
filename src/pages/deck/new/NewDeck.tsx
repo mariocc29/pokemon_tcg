@@ -1,29 +1,42 @@
+import { useState } from 'react';
+
 import { Button } from '/@shared/button/Button'
+import { CardType } from '/@shared/card_type/CardType';
 import './new_deck.scss'
 
 export const NewDeck = () => {
-  const types = ['fire', 'grass', 'water'];
+  const [selectedType, setSelectedType] = useState('');
+
+  const types = ['colorless', 'darkness', 'dragon', 'fairy', 'fighting', 'fire', 'grass', 'lightning', 'metal', 'psychic', 'water'];
+
+  const handleTypeClick = (type: string) => {
+    setSelectedType(type);
+  };
 
   return (
     <>
       <section className='form'>
         <main>
           <article className='row'>
-            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 title'>
+            <div className='col-sm-12 col-md-8 offset-md-2 title'>
               Create your deck of a given type:
             </div>
           </article>
           <article className='row'>
-            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3'>
+            <div className='col-sm-12 col-md-8 offset-md-2'>
               <input type='text' placeholder='Input your name collection' />
             </div>
           </article>
           <article className='row'>
-            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3'>
+            <div className='col-sm-12 col-md-8 offset-md-2'>
               <div className='cards'>
                 {
                   types.map(type => (
-                    <div key={type}>{type}</div>
+                    <CardType 
+                      key={type} 
+                      kindOf={type} 
+                      isSelected={selectedType === type} 
+                      onClick={() => handleTypeClick(type)} />
                   ))
                 }
               </div>
@@ -33,7 +46,7 @@ export const NewDeck = () => {
 
         <footer>
           <div className='row'>
-            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 align-center'>
+            <div className='col-sm-12 col-md-8 offset-md-2 align-center'>
               <Button>
                 Gotta save 'em all!
               </Button>

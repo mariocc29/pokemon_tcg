@@ -1,9 +1,11 @@
+import React from 'react'
+
 import './button.scss'
 
 interface ButtonProps {
   children: React.ReactNode;
   btnClass?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({ btnClass = 'btn-info', children, onClick }) => {

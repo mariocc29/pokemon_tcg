@@ -14,17 +14,17 @@ export const DeckEmptyState = () => {
       <section className='empty_state'>
         <main>
           <article className='row'>
-            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 pokeball'>
-              <img src={ pokeball } alt="Pokeball Opened" onClick={handleClick}/>
+            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-lg-4 pokeball'>
+              <img src={ pokeball } alt="Pokeball Opened" />
             </div>
           </article>
           <article className='row'>
-            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3'>
+            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-lg-4'>
               <h1>Your deck awaits</h1>
             </div>
           </article>
           <article className='row'>
-            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 message'>
+            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-lg-4 message'>
               Add cards to your deck based on their type, and they will magically appear here.
             </div>
           </article>
@@ -32,7 +32,7 @@ export const DeckEmptyState = () => {
 
         <footer>
           <div className='row'>
-            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3'>
+            <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-lg-4'>
               <Button onClick={handleClick}>
                 Create your first deck here
               </Button>
