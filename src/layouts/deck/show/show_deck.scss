@@ -1,0 +1,48 @@
+.wrapper-deck {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100svh;
+  z-index: 1;
+  padding: 0 20px;
+  color: $color-primary-light;
+  transition: transform 0.5s ease;
+  
+  & > header {
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+
+  & > main {
+    .info-card {
+      padding: 20px 0;
+    }
+
+    .list-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      overflow-y: auto;
+      max-height: calc(100vh - 200px);
+      
+      img { width: 159px; height: 221; }
+    }
+
+  }
+  
+  &.swipe-out { transform: translateX(100%); }
+  &.swipe-in { transform: translateX(0%); }
+
+  &.wrapper-deck-colorless { background-color: $color-type-colorless; }
+  &.wrapper-deck-darkness { background-color: $color-type-darkness; }
+  &.wrapper-deck-dragon { background-color: $color-type-dragon; }
+  &.wrapper-deck-fairy { background-color: $color-type-fairy; }
+  &.wrapper-deck-fighting { background-color: $color-type-fighting; }
+  &.wrapper-deck-fire { background-color: $color-type-fire; }
+  &.wrapper-deck-grass { background-color: $color-type-grass; }
+  &.wrapper-deck-lightning { background-color: $color-type-lightning; }
+  &.wrapper-deck-metal { background-color: $color-type-metal; }
+  &.wrapper-deck-psychic { background-color: $color-type-psychic; }
+  &.wrapper-deck-water { background-color: $color-type-water; }
+}

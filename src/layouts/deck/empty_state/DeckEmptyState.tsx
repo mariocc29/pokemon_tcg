@@ -7,7 +7,7 @@ import './deck_empty_state.scss'
 export const DeckEmptyState = () => {
   const navigate = useNavigate();
 
-  const handleClick = () => navigate('/deck');
+  const handleClick = () => navigate('/deck/new');
 
   return(
     <>

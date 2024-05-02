@@ -1,4 +1,6 @@
-interface CardsDeckData {
+export interface CardsDeckData {
+  id: string
+  name: string
   image: string
 }
 

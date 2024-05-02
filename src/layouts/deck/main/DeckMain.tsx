@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { useLocalStorage } from '/@hooks/useLocalStorage'
 import DeckData from "/@interfaces/deck_data";
 import { Button } from '/@shared/button/Button'
 import { CardDeck } from '/@shared/card_deck/CardDeck';
+import { toggle } from '/@state/deck/deckSlice';
 import './deck_main.scss'
 
 interface DeckMainProps{
@@ -13,10 +15,21 @@ interface DeckMainProps{
 
 export const DeckMain: React.FC<DeckMainProps> = ({ decks }) => {
   const [types, setTypes] = useState<Array<string>>([]);
+  const [displayedDecks, setDisplayedDecks] = useState<Array<DeckData>>(decks);
+  const [selectedType, setSelectedType] = useState<string>("Show all");
   const { getItem } = useLocalStorage('types')
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   
-  const handleNewClick = () => navigate('/deck');
+  const handleNewClick = () => navigate('/deck/new');
+
+  const handleShowClick = (deck: DeckData) => {
+    dispatch(toggle(deck))
+  };
+
+  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedType(event.target.value);
+  };
 
   useEffect(() => {
     setTypes(
@@ -26,6 +39,14 @@ export const DeckMain: React.FC<DeckMainProps> = ({ decks }) => {
     )
   }, []);
 
+  useEffect(() => {
+    if (selectedType === "Show all") {
+      setDisplayedDecks(decks);
+    } else {
+      setDisplayedDecks(decks.filter(deck => deck.category === selectedType.toLowerCase()));
+    }
+  }, [selectedType, decks]);
+
   return (
     <>
       <section className="decks">
@@ -34,7 +55,7 @@ export const DeckMain: React.FC<DeckMainProps> = ({ decks }) => {
         </header>
         <main>
           <article className='select'>
-            <select>
+            <select onChange={handleTypeChange} value={selectedType}>
                 <option>Show all</option>
                 {
                   types.map(type => (
@@ -45,7 +66,14 @@ export const DeckMain: React.FC<DeckMainProps> = ({ decks }) => {
             <div className="select-arrow"></div>
           </article>
           <article className="card-decks">
-            { decks.map(deck => <CardDeck key={deck.id} deck={deck}/>) }
+            { 
+              displayedDecks.map(deck => (
+                <CardDeck 
+                  key={deck.id} 
+                  deck={deck} 
+                  onClick={() => handleShowClick(deck)} />
+              )) 
+            }
           </article>
         </main>
         <footer className='align-center'>

@@ -1,10 +1,15 @@
 import DeckData from "/@interfaces/deck_data"
 import './card_deck.scss'
 
-export const CardDeck: React.FC<DeckData> = ({ deck }) => {
+interface CardDeckProps {
+  deck: DeckData,
+  onClick: () => void;
+}
+
+export const CardDeck: React.FC<CardDeckProps> = ({ deck, onClick }) => {
   return (
     <>
-      <div className={`deck deck-${deck.category}`}>
+      <div className={`deck deck-${deck.category}`} onClick={onClick}>
         <div>
           <div>{ deck.label }</div>
           <span className={`caption caption-${deck.category}`}>{ deck.category }</span>

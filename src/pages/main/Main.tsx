@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocalStorage } from '/@hooks/useLocalStorage'
 import { Header } from '/@layouts/header/Header'
 import { Modal } from '/@layouts/modal/Modal'
+import { ShowDeck } from '/@layouts/deck/show/ShowDeck'
 import { Deck } from '/@pages/deck/Deck'
 import { NewDeck } from '/@pages/deck/new/NewDeck'
 import { getTypes } from '/@services/typesService';
@@ -44,12 +45,13 @@ export const Main = () => {
         
         <main>
           <Routes>
-            <Route path="/" element={<Deck />} />
-            <Route path="/deck" element={<NewDeck />} />
+            <Route path="*" element={<Deck />} />
+            <Route path="/deck/new" element={<NewDeck />} />
           </Routes>
         </main>
 
         { show && <Modal /> }
+        <ShowDeck />
       </section>
 
       <div className={`overlay ${show ? 'fade-in' : 'fade-out'}`}></div>
