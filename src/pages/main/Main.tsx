@@ -41,7 +41,7 @@ export const Main = () => {
           </Routes>
         </main>
 
-        <Modal />
+        { show && <Modal /> }
       </section>
 
       <div className={`overlay ${show ? 'fade-in' : 'fade-out'}`}></div>

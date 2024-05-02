@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AxiosResponse } from 'axios';
 
 import { useLocalStorage } from '/@hooks/useLocalStorage';
@@ -16,7 +15,6 @@ export const NewDeck = () => {
   const [types, setTypes] = useState<Array<string>>([]);
   const { getItem } = useLocalStorage('types')
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleTypeClick = (type: string) => {
     setSelectedType(type);
@@ -26,25 +24,39 @@ export const NewDeck = () => {
     setCollectionName(event.target.value);
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    dispatch(toggle({show: true, status: 'success', message: 'Your deck was created successfully'}))
-    
-    // if (!collectionName || !selectedType) {
-    //   console.error('Collection name and type must be selected');
-    //   return;
-    // }
+  const handleSubmit = () => {
+    if (!collectionName || !selectedType) {
+      dispatch(
+        toggle({
+          show: true, 
+          status: 'alert', 
+          message: 'Collection name and type must be selected',
+        })
+      )
+      return;
+    }
   
-    // createDeck({
-    //   label: collectionName,
-    //   category: selectedType
-    // }).then((_: AxiosResponse<any>) => {
-    //   navigate('/')
-    // })
-    // .catch((error: AxiosResponse<any>) => {
-    //   console.error(error);
-    // });
+    createDeck({
+      label: collectionName,
+      category: selectedType
+    }).then((_: AxiosResponse<any>) => {
+      dispatch(
+        toggle({
+          show: true, 
+          status: 'success', 
+          message: 'Your deck was created successfully',
+        })
+      )
+    })
+    .catch((_: AxiosResponse<any>) => {
+      dispatch(
+        toggle({
+          show: true, 
+          status: 'alert', 
+          message: 'Something went wrong, please try again',
+        })
+      )
+    });
   }
 
   useEffect(() => {
@@ -53,49 +65,49 @@ export const NewDeck = () => {
 
   return (
     <>
-      <form onSubmit={ (event) => onSubmit(event) }>
-        <section className='form'>
-          <main>
-            <article className='row'>
-              <div className='col-sm-12 col-md-8 offset-md-2 title'>
-                Create your deck of a given type:
-              </div>
-            </article>
-            <article className='row'>
-              <div className='col-sm-12 col-md-8 offset-md-2'>
-                <input 
-                  type='text' 
-                  placeholder='Input your name collection'
-                  value={collectionName} 
-                  onChange={handleCollectionNameChange} />
-              </div>
-            </article>
-            <article className='row'>
-              <div className='col-sm-12 col-md-8 offset-md-2'>
-                <div className='cards'>
-                  {
-                    types.map(type => (
-                      <CardType 
-                        key={type} 
-                        kindOf={type} 
-                        isSelected={selectedType === type} 
-                        onClick={() => handleTypeClick(type)} />
-                    ))
-                  }
-                </div>
-              </div>
-            </article>
-          </main>
-
-          <footer>
-            <div className='row'>
-              <div className='col-sm-12 col-md-8 offset-md-2 align-center'>
-                <Button>Gotta save 'em all!</Button>
+      <section className='form'>
+        <main>
+          <article className='row'>
+            <div className='col-sm-12 col-md-8 offset-md-2 title'>
+              Create your deck of a given type:
+            </div>
+          </article>
+          <article className='row'>
+            <div className='col-sm-12 col-md-8 offset-md-2'>
+              <input 
+                type='text' 
+                placeholder='Input your name collection'
+                value={collectionName} 
+                onChange={handleCollectionNameChange} />
+            </div>
+          </article>
+          <article className='row'>
+            <div className='col-sm-12 col-md-8 offset-md-2'>
+              <div className='cards'>
+                {
+                  types.map(type => (
+                    <CardType 
+                      key={type} 
+                      kindOf={type} 
+                      isSelected={selectedType === type} 
+                      onClick={() => handleTypeClick(type)} />
+                  ))
+                }
               </div>
             </div>
-          </footer>
-        </section>
-      </form>
+          </article>
+        </main>
+
+        <footer>
+          <div className='row'>
+            <div className='col-sm-12 col-md-8 offset-md-2 align-center'>
+              <Button onClick={handleSubmit}>
+                Gotta save 'em all!
+              </Button>
+            </div>
+          </div>
+        </footer>
+      </section>
     </>
   )
 }

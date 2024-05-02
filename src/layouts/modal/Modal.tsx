@@ -1,13 +1,31 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import modalSuccess from '/@assets/images/modal-success.svg'
 import modalAlert from '/@assets/images/modal-alert.svg'
 import { RootState } from '/@state/store'
+import { toggle } from '/@state/modal/modalSlice'
 import { Button } from '/@shared/button/Button'
 import './modal.scss'
 
 export const Modal = () => {
   const modal = useSelector((state: RootState) => state.modal)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    dispatch(
+      toggle({
+        show: false, 
+        status: null, 
+        message: null,
+      })
+    )
+
+    if( modal.status === 'success' ) {
+      navigate('/')
+    }
+  }
 
   return (
     <>
@@ -20,7 +38,7 @@ export const Modal = () => {
           { modal.message }
         </article>
         <article>
-          <Button btnClass={`btn-${modal.status}`}>
+          <Button btnClass={`btn-${modal.status}`} onClick={handleClick}>
             Catch it!
           </Button>
         </article>
