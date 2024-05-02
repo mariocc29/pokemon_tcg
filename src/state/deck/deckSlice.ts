@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import DeckData from "/@interfaces/deck_data";
+import { DeckData } from "@/interfaces/deck_data";
 
 interface DeckState {
   deck: DeckData | null;
@@ -10,15 +10,11 @@ const initialState: DeckState = {
   deck: null,
 }
 
-interface TogglePayload {
-  deck: DeckData | null
-}
-
 const deckSlice = createSlice({
   name: "deck",
   initialState,
   reducers: {
-    toggle: (state, action: PayloadAction<TogglePayload>) => {
+    toggle: (state, action: PayloadAction<DeckData | null>) => {
       state.deck = action.payload
     }
   },

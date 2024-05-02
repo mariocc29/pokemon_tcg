@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import { CardDeck } from '@/shared';
-import DeckData from '@/interfaces/deck_data';
+import { DeckData } from '@/interfaces/deck_data';
 
 describe('CardDeck component', () => {
   const mockDeck:DeckData = {

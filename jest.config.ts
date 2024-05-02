@@ -4,7 +4,7 @@ const jestConfig: JestConfigWithTsJest = {
   preset: 'ts-jest',
 
   transform: {
-    "\\.(scss)$": "jest-transform-stub",
+    "\\.(scss|svg)$": "jest-transform-stub",
     "^.+\\.tsx?$": "ts-jest",
   },
 

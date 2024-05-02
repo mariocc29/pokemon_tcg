@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { useLocalStorage } from '@/hooks/useLocalStorage'
-import DeckData from "/@interfaces/deck_data";
+import { DeckData } from '@/interfaces/deck_data';
 import { Button, CardDeck } from '@/shared'
 import { toggleDeck } from '@/state';
 import './deck_main.scss'
@@ -32,7 +32,7 @@ export const DeckMain: React.FC<DeckMainProps> = ({ decks }) => {
 
   useEffect(() => {
     setTypes(
-      getItem().map((type: string) => {
+      getItem()?.map((type: string) => {
         return type.charAt(0).toUpperCase() + type.slice(1);
       })
     )
@@ -54,10 +54,10 @@ export const DeckMain: React.FC<DeckMainProps> = ({ decks }) => {
         </header>
         <main>
           <article className='select'>
-            <select onChange={handleTypeChange} value={selectedType}>
+            <select onChange={handleTypeChange} value={selectedType} aria-label="Select deck type">
                 <option>Show all</option>
                 {
-                  types.map(type => (
+                  types?.map(type => (
                     <option key={type}>{type}</option>
                   ))
                 }

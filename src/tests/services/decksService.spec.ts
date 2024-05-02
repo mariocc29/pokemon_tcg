@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createDeck, getDecks } from '@/services';
 import { config } from '@/config';
-import DeckData from '@/interfaces/deck_data';
+import { DeckData } from '@/interfaces/deck_data';
 
 jest.mock('axios');
 
