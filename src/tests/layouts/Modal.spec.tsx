@@ -2,15 +2,15 @@
 // import { Modal } from '@/layouts';
 
 describe('Modal', () => {
-  it('should render modal correctly with success status', () => {
+  xit('should render modal correctly with success status', () => {
     
   });
 
-  it('should render modal correctly with alert status', () => {
+  xit('should render modal correctly with alert status', () => {
     
   });
 
-  it('should dispatch toggleModal action and navigate to home page when button is clicked', () => {
+  xit('should dispatch toggleModal action and navigate to home page when button is clicked', () => {
     
   });
 });
