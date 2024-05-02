@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import pokeball from '/@assets/images/pokeball_open.svg'
-import { Button } from '/@shared'
+import pokeball from '@/assets/images/pokeball_open.svg'
+import { Button } from '@/shared'
 import './deck_empty_state.scss'
 
 export const DeckEmptyState = () => {

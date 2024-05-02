@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { useLocalStorage } from '/@hooks/useLocalStorage'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 import DeckData from "/@interfaces/deck_data";
-import { Button, CardDeck } from '/@shared'
-import { toggleDeck } from '/@state';
+import { Button, CardDeck } from '@/shared'
+import { toggleDeck } from '@/state';
 import './deck_main.scss'
 
 interface DeckMainProps{

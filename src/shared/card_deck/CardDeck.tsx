@@ -1,4 +1,4 @@
-import DeckData from "/@interfaces/deck_data"
+import DeckData from '@/interfaces/deck_data'
 import './card_deck.scss'
 
 interface CardDeckProps {

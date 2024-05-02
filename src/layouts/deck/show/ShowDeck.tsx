@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import back from '/@assets/images/back.svg'
-import { DeckData, CardsDeckData } from '/@interfaces/deck_data';
-import { RootState, toggleDeck } from '/@state'
+import back from '@/assets/images/back.svg'
+import { DeckData, CardsDeckData } from '@/interfaces/deck_data';
+import { RootState, toggleDeck } from '@/state'
 import './show_deck.scss'
 
 export const ShowDeck = () => {

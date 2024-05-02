@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { useLocalStorage } from '/@hooks/useLocalStorage'
-import { Header, Modal, ShowDeck } from '/@layouts'
-import { Deck, NewDeck } from '/@pages'
-import { getTypes } from '/@services'
-import { RootState, toggleModal } from "/@state";
+import { useLocalStorage } from '@/hooks/useLocalStorage'
+import { Header, Modal, ShowDeck } from '@/layouts'
+import { Deck, NewDeck } from '@/pages'
+import { getTypes } from '@/services'
+import { RootState, toggleModal } from '@/state';
 import './main.scss'
 
 export const Main = () => {

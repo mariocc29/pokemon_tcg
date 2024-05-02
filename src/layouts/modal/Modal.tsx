@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import modalSuccess from '/@assets/images/modal-success.svg'
-import modalAlert from '/@assets/images/modal-alert.svg'
-import { RootState, toggleModal } from '/@state'
-import { Button } from '/@shared'
+import modalSuccess from '@/assets/images/modal-success.svg'
+import modalAlert from '@/assets/images/modal-alert.svg'
+import { RootState, toggleModal } from '@/state'
+import { Button } from '@/shared'
 import './modal.scss'
 
 export const Modal = () => {

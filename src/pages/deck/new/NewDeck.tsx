@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AxiosResponse } from 'axios';
 
-import { useLocalStorage } from '/@hooks/useLocalStorage';
-import { Button, CardType } from '/@shared'
-import { createDeck } from '/@services';
-import { toggleModal } from '/@state';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { Button, CardType } from '@/shared'
+import { createDeck } from '@/services';
+import { toggleModal } from '@/state';
 import './new_deck.scss'
 
 export const NewDeck = () => {

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import pokemonLogo from '/@assets/images/logo.svg'
-import pokeball from '/@assets/images/pokeball.svg'
+import pokemonLogo from '@/assets/images/logo.svg'
+import pokeball from '@/assets/images/pokeball.svg'
 import './header.scss'
 
 export const Header = () => {
