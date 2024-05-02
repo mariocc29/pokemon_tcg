@@ -3,14 +3,10 @@ import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useLocalStorage } from '/@hooks/useLocalStorage'
-import { Header } from '/@layouts/header/Header'
-import { Modal } from '/@layouts/modal/Modal'
-import { ShowDeck } from '/@layouts/deck/show/ShowDeck'
-import { Deck } from '/@pages/deck/Deck'
-import { NewDeck } from '/@pages/deck/new/NewDeck'
-import { getTypes } from '/@services/typesService';
-import { RootState } from '/@state/store'
-import { toggle } from '/@state/modal/modalSlice';
+import { Header, Modal, ShowDeck } from '/@layouts'
+import { Deck, NewDeck } from '/@pages'
+import { getTypes } from '/@services'
+import { RootState, toggleModal } from "/@state";
 import './main.scss'
 
 export const Main = () => {
@@ -25,7 +21,7 @@ export const Main = () => {
         setItem(data)
       } catch (_) {
         dispatch(
-          toggle({
+          toggleModal({
             show: true, 
             status: 'alert', 
             message: 'Error fetching types',

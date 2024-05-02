@@ -4,9 +4,8 @@ import { useDispatch } from 'react-redux';
 
 import { useLocalStorage } from '/@hooks/useLocalStorage'
 import DeckData from "/@interfaces/deck_data";
-import { Button } from '/@shared/button/Button'
-import { CardDeck } from '/@shared/card_deck/CardDeck';
-import { toggle } from '/@state/deck/deckSlice';
+import { Button, CardDeck } from '/@shared'
+import { toggleDeck } from '/@state';
 import './deck_main.scss'
 
 interface DeckMainProps{
@@ -24,7 +23,7 @@ export const DeckMain: React.FC<DeckMainProps> = ({ decks }) => {
   const handleNewClick = () => navigate('/deck/new');
 
   const handleShowClick = (deck: DeckData) => {
-    dispatch(toggle(deck))
+    dispatch(toggleDeck(deck))
   };
 
   const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

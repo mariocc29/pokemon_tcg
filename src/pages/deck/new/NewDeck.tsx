@@ -3,10 +3,9 @@ import { useDispatch } from 'react-redux';
 import { AxiosResponse } from 'axios';
 
 import { useLocalStorage } from '/@hooks/useLocalStorage';
-import { Button } from '/@shared/button/Button'
-import { CardType } from '/@shared/card_type/CardType';
-import { createDeck } from '/@services/decksService';
-import { toggle } from '/@state/modal/modalSlice';
+import { Button, CardType } from '/@shared'
+import { createDeck } from '/@services';
+import { toggleModal } from '/@state';
 import './new_deck.scss'
 
 export const NewDeck = () => {
@@ -27,7 +26,7 @@ export const NewDeck = () => {
   const handleSubmit = () => {
     if (!collectionName || !selectedType) {
       dispatch(
-        toggle({
+        toggleModal({
           show: true, 
           status: 'alert', 
           message: 'Collection name and type must be selected',
@@ -41,7 +40,7 @@ export const NewDeck = () => {
       category: selectedType
     }).then((_: AxiosResponse<any>) => {
       dispatch(
-        toggle({
+        toggleModal({
           show: true, 
           status: 'success', 
           message: 'Your deck was created successfully',
@@ -50,7 +49,7 @@ export const NewDeck = () => {
     })
     .catch((_: AxiosResponse<any>) => {
       dispatch(
-        toggle({
+        toggleModal({
           show: true, 
           status: 'alert', 
           message: 'Something went wrong, please try again',

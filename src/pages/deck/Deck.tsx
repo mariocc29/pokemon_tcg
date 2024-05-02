@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import DeckData from "/@interfaces/deck_data";
-import { DeckEmptyState } from "/@layouts/deck/empty_state/DeckEmptyState"
-import { DeckMain } from "/@layouts/deck/main/DeckMain";
-import { getDecks } from "/@services/decksService";
-import { toggle } from '/@state/modal/modalSlice';
+import { DeckEmptyState, DeckMain } from "/@layouts";
+import { getDecks } from "/@services";
+import { toggleModal } from "/@state";
 
 export const Deck = () => {
   const [decks, setDecks] = useState<Array<DeckData>>([]);
@@ -20,7 +19,7 @@ export const Deck = () => {
         setLoading(false);
       } catch (error) {
         dispatch(
-          toggle({
+          toggleModal({
             show: true, 
             status: 'alert', 
             message: 'Error fetching decks',

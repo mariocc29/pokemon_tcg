@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 import modalSuccess from '/@assets/images/modal-success.svg'
 import modalAlert from '/@assets/images/modal-alert.svg'
-import { RootState } from '/@state/store'
-import { toggle } from '/@state/modal/modalSlice'
-import { Button } from '/@shared/button/Button'
+import { RootState, toggleModal } from '/@state'
+import { Button } from '/@shared'
 import './modal.scss'
 
 export const Modal = () => {
@@ -15,7 +14,7 @@ export const Modal = () => {
 
   const handleClick = () => {
     dispatch(
-      toggle({
+      toggleModal({
         show: false, 
         status: null, 
         message: null,

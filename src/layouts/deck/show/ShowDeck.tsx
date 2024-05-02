@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import back from '/@assets/images/back.svg'
 import { DeckData, CardsDeckData } from '/@interfaces/deck_data';
-import { RootState } from '/@state/store'
-import { toggle } from '/@state/deck/deckSlice';
+import { RootState, toggleDeck } from '/@state'
 import './show_deck.scss'
 
 export const ShowDeck = () => {
@@ -13,7 +12,7 @@ export const ShowDeck = () => {
   const dispatch = useDispatch();
   
   const handleClick = () => {
-    dispatch(toggle(null))
+    dispatch(toggleDeck(null))
   }
 
   useEffect(() => {

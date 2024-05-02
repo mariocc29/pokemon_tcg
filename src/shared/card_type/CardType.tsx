@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 import './card_type.scss'
 
 interface CardTypeProps {
