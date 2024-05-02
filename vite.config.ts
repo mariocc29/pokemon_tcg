@@ -9,6 +9,7 @@ export default defineConfig({
       '@config': '/src/config',
       '/@assets/': '/src/assets/',
       '/@hooks/': '/src/hooks/',
+      '/@interfaces/': '/src/interfaces/',
       '/@layouts/': '/src/layouts/',
       '/@pages/': '/src/pages/',
       '/@services/': '/src/services/',
@@ -24,6 +25,7 @@ export default defineConfig({
           @import "./src/styles/_fonts.scss";
           @import "./src/styles/_media_queries.scss";
           @import "./src/styles/_grids.scss";
+          @import "./src/styles/_inputs.scss";
         `
       }
     }

@@ -34,7 +34,7 @@ export const DeckEmptyState = () => {
           <div className='row'>
             <div className='col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-lg-4'>
               <Button onClick={handleClick}>
-                Create your first deck here
+                Forge your first PokeDeck here
               </Button>
             </div>
           </div>

@@ -14,3 +14,12 @@ export const createDeck = async (deckData: DeckData): Promise<AxiosResponse<any>
     throw error;
   }
 };
+
+export const getDecks = async () => {
+  try {
+    const response = await axios.get(`${config.POKEMON_TCG_API}/decks`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

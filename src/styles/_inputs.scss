@@ -1,0 +1,56 @@
+input[type=text] {
+  padding: 5px 10px;
+  width: 100%;
+  height: 48px;
+  outline: none;
+  background: $color-primary-light;
+  border: 1px solid $color-secondary-light;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px $color-secondary-dark;
+  margin-bottom: 20px;
+}
+
+input[type=text]:focus {
+  border: 1px solid $color-primary-dark;
+}
+
+input[type=text]::placeholder {
+  color: $color-secondary-light;
+}
+
+.select {
+	position: relative;
+  
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 48px;
+    padding: 5px 10px 5px 10px;
+    background-color: $color-primary-light;
+    border: 1px solid $color-secondary-light;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 8px $color-secondary-dark;
+  }
+  
+  select:focus {
+    border: 1px solid $color-primary-dark;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: $color-primary-dark;
+    clip-path: polygon(8% 17%, 0% 25%, 50% 84%, 100% 25%, 92% 17%, 50% 65%);
+  }
+}
+
+

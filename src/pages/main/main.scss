@@ -4,6 +4,16 @@
   height: 100svh;
   position: relative;
 
+  & > header {
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    width: 100%;
+    z-index: 1;
+  }
+
   & > main {
     display: flex;
     flex-direction: column;
