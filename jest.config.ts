@@ -14,6 +14,10 @@ const jestConfig: JestConfigWithTsJest = {
   ],
 
   testEnvironment: 'jsdom',
+
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+  },
 }
 
 export default jestConfig
