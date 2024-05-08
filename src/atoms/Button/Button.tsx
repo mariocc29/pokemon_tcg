@@ -3,7 +3,7 @@ import './Button.styles.scss'
 
 interface ButtonProps {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   btnClass?: string;
   animateOnClick?: boolean;
 }
@@ -12,7 +12,10 @@ export const Button: React.FC<ButtonProps> = ({ children, onClick, btnClass = 'b
   const [pressed, setPressed] = useState(false)
 
   const handleClick = useCallback(() => {
-    onClick()
+    if (onClick) {
+      onClick()
+    }
+
     if (animateOnClick) {
       setPressed(true)
       setTimeout(() => setPressed(false), 1000)

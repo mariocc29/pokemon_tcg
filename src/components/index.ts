@@ -1,0 +1,1 @@
+export { New as NewDeck } from '@/components/Deck/New/New'
