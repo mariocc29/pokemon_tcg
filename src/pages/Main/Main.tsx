@@ -20,19 +20,22 @@ export const Main = () => {
   }, [])
   
   return (
-    <section className='wrapper'>
-      
-      <Header/>
-      
-      <main>
-        <Routes>
-          <Route path="/deck" element={<DeckMain />} />
-          <Route path="/deck/new" element={<New />} />
-          <Route path="*" element={<Navigate to="/deck" replace />} />
-        </Routes>
-      </main>
+    <>
+      <section className='wrapper'>
+        
+        <Header/>
+        
+        <main>
+          <Routes>
+            <Route path="/deck" element={<DeckMain />} />
+            <Route path="/deck/new" element={<New />} />
+            <Route path="*" element={<Navigate to="/deck" replace />} />
+          </Routes>
+        </main>
 
-      { show && <Modal /> }
-    </section>
+        { show && <Modal /> }
+      </section>
+      <div className={`overlay ${show ? 'fade-in' : 'fade-out'}`}></div>
+    </>
   )
 }
