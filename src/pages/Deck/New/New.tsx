@@ -4,16 +4,25 @@ import { Types } from '@/organisms';
 import { Button } from '@/atoms';
 import './New.styles.scss';
 import { useEffect } from 'react';
+import { usePokemonDecks } from '@/hooks';
 
 export const New = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const { create } = usePokemonDecks()
   
   const handleTypeClick = (type: string) => {
     setValue("selectedType", type);
   };
 
   const onSubmit = (data: any) => {
-    console.log(data.collectionName, data.selectedType);
+    create({
+      label: data.collectionName,
+      category: data.selectedType
+    }).then(() => {
+      console.log('ok')
+    }).catch(() => {
+      console.log('error')
+    })
   };
 
   useEffect(() => {
