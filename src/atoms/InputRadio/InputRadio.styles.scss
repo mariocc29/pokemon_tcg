@@ -1,4 +1,6 @@
 .checkmark-container {
+  cursor: pointer;
+  
   input[type=radio] { display: none; }
 
   .checkmark-frame {
@@ -13,8 +15,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      height: 14px;
-      width: 14px;
+      height: 16px;
+      width: 16px;
       border: 2px solid;
       border-radius: 100%;
 

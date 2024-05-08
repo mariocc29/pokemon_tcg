@@ -1,0 +1,52 @@
+.card-type {
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  height: 52px;
+  padding: 0 20px;
+  position: relative;
+  width: 160px;
+
+  span {
+    text-transform: capitalize;
+    color: $color-primary-light;
+  }
+
+  .input-radio {
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 10px;
+  }
+
+  svg {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    opacity: 0.1;
+
+    path {
+      fill: $color-primary-light;
+    }
+  }
+
+  @each $type-color, $type-color-value in (
+    default: $color-primary-dark,
+    colorless: $color-type-colorless,
+    darkness: $color-type-darkness,
+    dragon: $color-type-dragon,
+    fairy: $color-type-fairy,
+    fighting: $color-type-fighting,
+    fire: $color-type-fire,
+    grass: $color-type-grass,
+    lightning: $color-type-lightning,
+    metal: $color-type-metal,
+    psychic: $color-type-psychic,
+    water: $color-type-water
+  ) {
+    &.card-type-#{$type-color} {
+      background-color: $type-color-value;
+    }
+  }
+}

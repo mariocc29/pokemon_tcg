@@ -4,35 +4,40 @@ import { InputRadio } from "@/atoms/InputRadio/InputRadio";
 
 describe('InputRadio Component', () => {
 
-  const onClickMock = jest.fn();
   const isSelected = false
 
-  it('calls onClick function when input radio is clicked', () => {
-    const { container } = render(<InputRadio onClick={onClickMock} isSelected={isSelected}/>);
+  it('returns a input radio checked when input radio is clicked', () => {
+    const { container } = render(<InputRadio isSelected={isSelected}/>);
     const radioElement = container.querySelector('input[type=radio]');
 
     if (radioElement) {
       fireEvent.click(radioElement);
-
       expect(radioElement).toBeChecked();
-      expect(onClickMock).toHaveBeenCalledTimes(1);
     }
   });
 
   it('applies custom CSS classes to the button', () => {
     const customClass = 'custom-class';
-    const { container } = render(<InputRadio onClick={onClickMock} isSelected={isSelected} inputClass={customClass} />);
+    const { container } = render(<InputRadio isSelected={isSelected} inputClass={customClass} />);
     const checkmarkElement = container.querySelector('.checkmark');
     
     expect(checkmarkElement).toHaveClass(`checkmark-${customClass}`);
   });
 
-  it('returns a input radio checked when isSelected is equal true', async () => {
-    const { container } = render(<InputRadio onClick={onClickMock} isSelected={true} />);
+  it('returns a input radio checked when isSelected is equal true', () => {
+    const { container } = render(<InputRadio isSelected={true} />);
     const radioElement = container.querySelector('input[type=radio]');
 
-    if (radioElement) {
-      expect(radioElement).toBeChecked();
-    }
+    expect(radioElement).toBeChecked();
+  });
+
+  it('useEffect updates selected state when isSelected prop changes', () => {
+    const { container, rerender } = render(<InputRadio isSelected={false} />);
+    const radioElement = container.querySelector('input[type="radio"]');
+    
+    expect(radioElement).not.toBeChecked();
+  
+    rerender(<InputRadio isSelected={true} />);
+    expect(radioElement).toBeChecked();
   });
 })
