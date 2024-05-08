@@ -8,10 +8,10 @@ import './Main.styles.scss'
 
 export const Main = () => {
   const { setItem } = useLocalStorage('types')
-  const { getTypes } = usePokemonTypes()
+  const { fetch } = usePokemonTypes()
 
   useEffect(() => {
-    getTypes().then(data => {
+    fetch().then(data => {
       setItem(data)
     })
   }, [])

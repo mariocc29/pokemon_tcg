@@ -4,13 +4,13 @@ import { usePokemonTypes } from '@/hooks';
 
 jest.mock('axios');
 
-describe('getTypes', () => {
+describe('fetch', () => {
   it('should fetch types', async () => {
     const mockResponseData = ['fire', 'grass', 'water'];
     (axios.get as jest.Mock).mockResolvedValueOnce({ data: mockResponseData });
 
-    const { getTypes } = usePokemonTypes();
-    const response = await getTypes();
+    const { fetch } = usePokemonTypes();
+    const response = await fetch();
 
     expect(response).toEqual(mockResponseData);
   });
@@ -19,8 +19,8 @@ describe('getTypes', () => {
     const mockError = new Error('Failed to fetch types');
     (axios.get as jest.Mock).mockRejectedValueOnce(mockError);
 
-    const { getTypes } = usePokemonTypes();
+    const { fetch } = usePokemonTypes();
 
-    await expect(getTypes()).rejects.toThrow(mockError);
+    await expect(fetch()).rejects.toThrow(mockError);
   });
 });
