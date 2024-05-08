@@ -13,7 +13,6 @@ export const New = () => {
   };
 
   const onSubmit = (data: any) => {
-    console.log("Errores:", errors);
     console.log(data.collectionName, data.selectedType);
   };
 
@@ -24,10 +23,16 @@ export const New = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <section>
+        <header className='row'>
+          <div className='col-sm-12 col-md-8 offset-md-2 title'>
+            Create your deck of a given type:
+          </div>
+        </header>
         <main>
           <article className='row'>
-            <div className='col-sm-12 col-md-8 offset-md-2 title'>
-              Create your deck of a given type:
+            <div className='col-sm-12 col-md-8 offset-md-2'>
+              <span className='bold'>Write the name of the deck you want to create and start your adventure.</span>
+              {errors.collectionName && <span className='caption error'>&nbsp;This field is required</span>}
             </div>
           </article>
           <article className='row'>
@@ -37,6 +42,12 @@ export const New = () => {
                 placeholder='Input your name collection'
                 {...register("collectionName", { required: true })}
               />
+            </div>
+          </article>
+          <article className='row'>
+            <div className='col-sm-12 col-md-8 offset-md-2'>
+              <span className='bold'>Each type of Pokémon has its own charm and strategy. What will yours be?</span>
+              {errors.selectedType && <span className='caption error'>&nbsp;This field is required</span>}
             </div>
           </article>
           <article className='row'>

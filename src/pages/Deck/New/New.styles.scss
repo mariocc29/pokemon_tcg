@@ -3,7 +3,7 @@ form > section {
   row-gap: 30px;
   flex-direction: column;
 
-  main {
+  & > main {
     display: flex;
     row-gap: 10px;
     flex-direction: column;

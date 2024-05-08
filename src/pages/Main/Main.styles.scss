@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  position: relative;
+
+  & > header {
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    width: 100%;
+    z-index: 1;
+  }
+
+  & > main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 16px;
+    padding-top: 20px;
+
+    @include md { margin: 0 32px; }
+    @include lg { margin: 0 64px; }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  background-color: $color-primary-dark;
+
+  &.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+  }
+
+  &.fade-in {
+    opacity: 25%;
+    transition: opacity 0.3s ease-in;
+    pointer-events: all;
+  }
+}

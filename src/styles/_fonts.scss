@@ -46,4 +46,6 @@ h4 {
 .caption {
   font-family: $font-family-roboto;
   font-size: 0.813rem;
+
+  &.error { color: $color-status-alert-bg; }
 }
