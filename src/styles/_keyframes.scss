@@ -1,0 +1,19 @@
+@keyframes btn-fill {
+  from {
+    stroke-dasharray: 0 calc(2 * 3.14 * 40);
+  }
+  to {
+    stroke-dasharray: calc(2 * 3.14 * 40) calc(2 * 3.14 * 40);
+  }
+}
+
+@keyframes checkmark-fill {
+  from {
+    height: 0px;
+    width: 0px;
+  }
+  to {
+    height: 14px;
+    width: 14px;
+  }
+}

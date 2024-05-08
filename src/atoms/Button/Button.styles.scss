@@ -1,12 +1,3 @@
-@keyframes fill {
-  from {
-    stroke-dasharray: 0 calc(2 * 3.14 * 40);
-  }
-  to {
-    stroke-dasharray: calc(2 * 3.14 * 40) calc(2 * 3.14 * 40);
-  }
-}
-
 .btn {
   display: flex;
   justify-content: center;
@@ -54,7 +45,7 @@
       transition: stroke-dasharray 1s linear;
       
       &.fill-in {
-        animation: fill 2s forwards linear;
+        animation: btn-fill 2s forwards linear;
       }
     }
 

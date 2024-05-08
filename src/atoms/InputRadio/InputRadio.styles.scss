@@ -1,0 +1,55 @@
+.checkmark-container {
+  input[type=radio] { display: none; }
+
+  .checkmark-frame {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: $color-primary-light;
+    border-radius: 100%;
+
+    .checkmark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 14px;
+      width: 14px;
+      border: 2px solid;
+      border-radius: 100%;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 100%;
+      }
+    }
+  }
+
+  @each $type-color, $type-color-value in (
+    default: $color-primary-dark,
+    colorless: $color-type-colorless,
+    darkness: $color-type-darkness,
+    dragon: $color-type-dragon,
+    fairy: $color-type-fairy,
+    fighting: $color-type-fighting,
+    fire: $color-type-fire,
+    grass: $color-type-grass,
+    lightning: $color-type-lightning,
+    metal: $color-type-metal,
+    psychic: $color-type-psychic,
+    water: $color-type-water
+  ) {
+    .checkmark-frame > .checkmark-#{$type-color} {
+      border-color: $type-color-value;
+    }
+
+    input[type=radio]:checked ~ .checkmark-frame > .checkmark-#{$type-color}::after { 
+      background-color: $type-color-value;
+      animation: checkmark-fill 0.2s forwards;
+    }
+  }
+}
