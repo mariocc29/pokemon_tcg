@@ -1,0 +1,14 @@
+header {
+  
+  .pokeball {
+    img { height: 24px; }
+  }
+
+  .brand {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px 0;
+    
+    img { height: 40px; }
+  }
+}

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import { useLocalStorage, usePokemonTypes } from "@/hooks";
 import { Main as DeckMain, New } from "@/pages/Deck";
-import { Modal } from "@/shared";
+import { Header, Modal } from "@/shared";
 import { RootState } from "@/state/store";
 import './Main.styles.scss'
 
@@ -21,7 +21,9 @@ export const Main = () => {
   
   return (
     <section className='wrapper'>
-      <header>Este es el header</header>
+      
+      <Header/>
+      
       <main>
         <Routes>
           <Route path="/deck" element={<DeckMain />} />
