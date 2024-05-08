@@ -1,16 +1,19 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react"
 
-import { useLocalStorage } from "@/hooks";
+import { useLocalStorage, usePokemonTypes } from "@/hooks";
 import { Main as DeckMain } from "@/pages/Deck/Main/Main";
 import { New } from "@/pages/Deck/New/New";
 import './Main.styles.scss'
 
 export const Main = () => {
   const { setItem } = useLocalStorage('types')
+  const { getTypes } = usePokemonTypes()
 
   useEffect(() => {
-    setItem(['fire', 'grass', 'water', 'fairy'])
+    getTypes().then(data => {
+      setItem(data)
+    })
   }, [])
   
   return (
