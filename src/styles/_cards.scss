@@ -1,0 +1,32 @@
+@mixin card($columns) {
+  $flex-basis: calc((100% / #{$grid-total-columns}) * #{$columns});
+  
+  @if $columns == $grid-total-columns {
+    flex-basis: $flex-basis;
+  } @else {
+    flex-basis: calc(#{$flex-basis} - $grid-gutter-column);
+  }
+
+  display: flex;
+  justify-content: center;
+  margin-left: calc($grid-gutter-column / 2);
+  margin-right: calc($grid-gutter-column / 2);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+
+  @include sm {
+    @for $col from 1 through $grid-total-columns {
+      .card-sm-#{$col} { @include card($col); }
+    }
+  }
+  
+  @include md {
+    @for $col from 1 through $grid-total-columns {
+      .card-md-#{$col} { @include card($col); }
+    }
+  }
+}

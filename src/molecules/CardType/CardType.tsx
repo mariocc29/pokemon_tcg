@@ -1,4 +1,4 @@
-import { InputRadio } from "@/atoms/InputRadio/InputRadio"
+import { InputRadio } from "@/atoms"
 import './CardType.styles.scss'
 
 interface CardTypeProps {

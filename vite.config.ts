@@ -20,6 +20,7 @@ export default defineConfig({
           @import "./src/styles/_media_queries.scss";
           @import "./src/styles/_grids.scss";
           @import "./src/styles/_inputs.scss";
+          @import "./src/styles/_cards.scss";
         `
       }
     }
