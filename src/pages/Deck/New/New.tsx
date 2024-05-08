@@ -1,14 +1,17 @@
 import { useForm } from 'react-hook-form';
-
-import { Types } from '@/organisms';
-import { Button } from '@/atoms';
-import './New.styles.scss';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { Button } from '@/atoms';
+import { Types } from '@/organisms';
 import { usePokemonDecks } from '@/hooks';
+import { toggleModal } from '@/state';
+import './New.styles.scss';
 
 export const New = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const { create } = usePokemonDecks()
+  const dispatch = useDispatch();
   
   const handleTypeClick = (type: string) => {
     setValue("selectedType", type);
@@ -19,9 +22,21 @@ export const New = () => {
       label: data.collectionName,
       category: data.selectedType
     }).then(() => {
-      console.log('ok')
+      dispatch(
+        toggleModal({
+          show: true, 
+          status: 'success', 
+          message: 'Your deck was created successfully',
+        })
+      )
     }).catch(() => {
-      console.log('error')
+      dispatch(
+        toggleModal({
+          show: true, 
+          status: 'alert', 
+          message: 'Something went wrong, please try again',
+        })
+      )
     })
   };
 

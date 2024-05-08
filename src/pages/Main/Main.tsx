@@ -1,14 +1,17 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react"
+import { useSelector } from "react-redux";
 
 import { useLocalStorage, usePokemonTypes } from "@/hooks";
-import { Main as DeckMain } from "@/pages/Deck/Main/Main";
-import { New } from "@/pages/Deck/New/New";
+import { Main as DeckMain, New } from "@/pages/Deck";
+import { Modal } from "@/shared";
+import { RootState } from "@/state/store";
 import './Main.styles.scss'
 
 export const Main = () => {
   const { setItem } = useLocalStorage('types')
   const { fetch } = usePokemonTypes()
+  const { show } = useSelector((state: RootState) => state.modal)
 
   useEffect(() => {
     fetch().then(data => {
@@ -26,6 +29,8 @@ export const Main = () => {
           <Route path="*" element={<Navigate to="/deck" replace />} />
         </Routes>
       </main>
+
+      { show && <Modal /> }
     </section>
   )
 }
